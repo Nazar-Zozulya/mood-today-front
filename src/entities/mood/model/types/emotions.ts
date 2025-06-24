@@ -1,0 +1,1 @@
+export type Emotions = 'happy' | 'sad' | 'angry' | 'excited'
