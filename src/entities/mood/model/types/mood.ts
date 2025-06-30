@@ -2,6 +2,7 @@ import { Emotions } from "./emotions"
 
 export type Mood = {
     id: number,
-    date: number
-    emotion: Emotions
+    answeredAt: string
+    mood: Emotions
+    userId: number
 }

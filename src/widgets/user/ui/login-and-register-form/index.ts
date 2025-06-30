@@ -1,1 +1,1 @@
-export { LoginAndRegisterForm } from './form'
+export { LoginOrRegisterForm } from './form'

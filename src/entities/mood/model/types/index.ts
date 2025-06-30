@@ -1,2 +1,2 @@
-export { type Emotions } from './emotions'
+export { type Emotions, type EmotionsList } from './emotions'
 export { type Mood } from './mood'

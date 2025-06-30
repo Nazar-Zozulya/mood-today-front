@@ -1,27 +1,27 @@
-import { Input } from "@/shared/ui/input"
 import styles from "./page.module.css"
-import { SelectMood } from "@/widgets/mood/select-mood"
-import { UserCard } from "@/widgets/user/ui/user-card"
-import { LoginAndRegisterForm } from "@/widgets/user/ui/login-and-register-form"
 import { StreakBlock } from "@/widgets/mood/streak-block"
-import { MoodHistoryList } from "@/widgets/mood/mood-history-list"
 import { MoodHistoryBlock } from "@/widgets/mood/mood-history-block"
+import { UserBlock } from "@/widgets/user/ui/user-block/block"
+import { SelectMoodBlock } from "@/widgets/mood/select-mood-block"
+import { useUserContext } from "@/entities/user/model/context/user.context"
 
 // import starIcon from '@/';
 
 export function MainPage() {
+	const { user } = useUserContext()
+
 	return (
-		<div className={styles.container}>
-			<div className={styles.leftBlock}>
-				{/* <LoginAndRegisterForm /> */}
-				<StreakBlock />
-				<MoodHistoryBlock />
-
-			</div>
-			{/* <LoginAndRegisterForm /> */}
-			<UserCard />
-
-			<SelectMood />
+		<div className={`${styles.container} ${!user ? styles.rightItems  : ''}`}>
+			{!user ? null : (
+				<>
+					<div className={styles.leftBlock}>
+						<StreakBlock />
+						<MoodHistoryBlock />
+					</div>
+					<SelectMoodBlock />
+				</>
+			)}
+			<UserBlock />
 		</div>
 	)
 }

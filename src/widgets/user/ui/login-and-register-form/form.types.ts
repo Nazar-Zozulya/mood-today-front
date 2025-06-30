@@ -1,3 +1,3 @@
-export interface ILoginAndRegisterForm {
+export interface ILoginOrRegisterForm {
     username: string
 }

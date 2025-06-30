@@ -2,22 +2,23 @@ import { Mood } from '@/entities/mood/model/types'
 import styles from './card.module.css'
 
 export function DayMoodCard(props: Mood) {
-    const { emotion, date } = props
+    const { mood, answeredAt } = props
 
-    function parseDate(date: number) {
+    function parseDate(date: string) {
         const newDate = new Date(date)
+        const month = newDate.getMonth()
+        const day = newDate.getDate()
 
-        const month = newDate.getMonth() + 1
-        const day = newDate.getDay()
+        const formattedDay = day < 10 ? `0${day}` : `${day}`
+        const formattedMonth = month < 10 ? `0${month}` : `${month}`
 
-        return day + '.' + month
+        return formattedMonth + '.' + formattedDay
     }
 
     return (
         <div className={styles.container}>
-            <p className={styles.dayText}>{parseDate(date)}</p>
-            {/* TODO сделать отображение картинки в зависимости от настроения */}
-            <img className={styles.moodIcon} src="/assets/images/smile.png" alt="" />
+            <p className={styles.dayText}>{parseDate(answeredAt)}</p>
+            <img className={styles.moodIcon} src={`/assets/images/${mood}.png`} alt="" />
         </div>
     )
 }

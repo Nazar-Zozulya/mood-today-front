@@ -19,3 +19,7 @@
     align-items: flex-start;
     gap: 10px;
 }
+
+.rightItems {
+    justify-content: flex-end !important;
+}

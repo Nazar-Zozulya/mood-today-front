@@ -1,18 +1,28 @@
 import { SmileButton } from "@/features/mood/smile-button";
 import styles from './select.module.css'
+import { EmotionsList } from "@/entities/mood/model/types";
+
 
 
 export function SelectMood() {
 
 
+    const EmotionsList: EmotionsList  = [
+        "excited",
+        "happy",
+        "sad",
+        "angry",
+    ]
+
     return (
         <div className={styles.container}>
             <p className={styles.title}>What’s your mood today?</p>
             <div className={styles.moodsContainer}>
-                <SmileButton icon="/assets/images/smile.png" emotion="excited"></SmileButton>
-                <SmileButton icon="/assets/images/smile.png" emotion="happy"></SmileButton>
-                <SmileButton icon="/assets/images/smile.png" emotion="sad"></SmileButton>
-                <SmileButton icon="/assets/images/smile.png" emotion="angry"></SmileButton>
+                { EmotionsList.map((emotion)=> {
+                    return(
+                        <SmileButton icon={`/assets/images/${emotion}.png`} emotion={emotion} />
+                    )
+                }) }
             </div>
         </div>
     )
